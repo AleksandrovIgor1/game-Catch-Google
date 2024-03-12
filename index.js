@@ -14,7 +14,7 @@ import {
 import {
 	Game
 } from "./ui/game/game.component.js";
-import { Start } from './ui/game/start/start.component.js'
+import { Start } from './ui/game/start/start.component.js';
 import {
 	Win
 } from './ui/game/win/win.component.js';
@@ -23,16 +23,16 @@ const appElement = document.querySelector("#app");
 
 function renderApp() {
 	appElement.innerHTML = '';
-	if (getGameStatus() === GAME_STATUSES.START) {
-		const start = Start();
-		appElement.append(start);
+	if (getGameStatus() === GAME_STATUSES.WIN) {
+		const win = Win();
+		appElement.append(win);
 	} else if (getGameStatus() === GAME_STATUSES.IN_PROGRESS){
 		const game = Game();
 		appElement.append(game);
 	}
 	else {
-		const win = Win();
-		appElement.append(win);
+		const start = Start();
+		appElement.append(start);
 	}
 
 }

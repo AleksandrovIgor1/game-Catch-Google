@@ -1,4 +1,6 @@
-import { start } from '../../../data.js';
+import {
+	clickStart
+} from '../../../data.js'
 
 export function Start() {
 	const element = document.createElement('div');
@@ -10,7 +12,7 @@ export function StartButton() {
 	const element = document.createElement('button');
 	element.innerHTML = 'START GAME';
 	element.addEventListener('click', () => {
-		start();
+		clickStart();
 	})
 	return element;
 }

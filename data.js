@@ -3,7 +3,8 @@ const data = {
 	missPoints: 0,
 	winPoints: 5,
 	win: false,
-	start: false,
+	inProgress: false,
+	inStart: true,
 	x: 0,
 	y: 0,
 	rowsCount: 5,
@@ -55,25 +56,29 @@ function catchGoogle(player) {
 		data.win = true;
 		clearInterval(googleJumpRunInterval);
 	} else {
-
 		changeGoogleCoordinates();
 		runGoogleJumpInterval();
 	}
 	listener();
 }
 export function restart() {
-	data.catchPoints = 0;
-	data.missPoints = 0;
+	data.players[0].points = 0;
+	data.players[1].points = 0;
 	data.x = 0;
 	data.y = 0;
 	data.win = false;
+	data.inProgress = false;
 	runGoogleJumpInterval();
 	listener();
 }
-export function start() {
-	data.start = true;
-	
+export function clickStart() {
+	data.x = 0;
+	data.y = 0;
+	data.inProgress = true;
+	runGoogleJumpInterval();
+	listener();
 }
+
 function movePlayer(delta, player) {
 	const newX = player.x + delta.x;
 	const newY = player.y + delta.y;
@@ -192,9 +197,9 @@ export function getScores() {
 	}
 }
 export function getGameStatus() {
-	if (data.start) return GAME_STATUSES.IN_PROGRESS;
-	if (data.win) return GAME_STATUSES.WIN;
-	else return GAME_STATUSES.START;
+	if (data.inProgress && !data.win) return GAME_STATUSES.IN_PROGRESS;
+	else if (data.win) return GAME_STATUSES.WIN;
+	else if (data.inStart) return GAME_STATUSES.START;
 	return {
 		catchPoints: data.catchPoints,
 		missPoints: data.missPoints,
@@ -202,12 +207,18 @@ export function getGameStatus() {
 }
 export const GAME_STATUSES = {
 	WIN: 'win',
-	IN_PROGRESS: 'in-progress',
-	START: 'START',
+	IN_PROGRESS: 'inProgress',
+	START: 'start',
 }
 
 export function getPointsToWin() {
 	return {
 		winPoints: data.winPoints,
+	}
+}
+
+export function getWin() {
+	return {
+		win: data.win
 	}
 }
