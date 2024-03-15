@@ -46,7 +46,7 @@ let googleJumpRunInterval = null;
 
 function runGoogleJumpInterval() {
 	clearInterval(googleJumpRunInterval);
-	googleJumpRunInterval = setInterval(missGoogle, 1500);
+	googleJumpRunInterval = setInterval(missGoogle, 1700);
 }
 runGoogleJumpInterval();
 
@@ -183,8 +183,23 @@ export function getPlayer2Position() {
 		y: data.players[1].y,
 	}
 }
-
+export function selectOption() {
+  const gridSelect = document.querySelector('#gridSelect');
+	for (let i = 0; i < gridSelect.length; i++) {
+		if (gridSelect[i].value == data.columnsCount) {
+			data.columnsCount = gridSelect.value;
+			data.rowsCount = gridSelect.value;
+		}
+	}
+	const pointsToWinSelect = document.querySelector('#pointsToWinSelect');
+	for (let i = 0; i < pointsToWinSelect.length; i++) {
+		if (pointsToWinSelect[i].value == data.winPoints) {
+			data.winPoints =  parseInt(pointsToWinSelect.value);
+		}
+	}
+}
 export function getSettings() {
+
 	return {
 		rowsCount: data.rowsCount,
 		columnsCount: data.columnsCount,
