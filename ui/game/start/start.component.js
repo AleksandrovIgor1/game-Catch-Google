@@ -5,6 +5,7 @@ import { SettingsPanel } from '../settings-panel/settings-panel.component.js'
 
 export function Start() {
 	const element = document.createElement('div');
+	element.id = 'start';
 	const settings = SettingsPanel();
 	const startButton = StartButton();
 	element.append(settings, startButton);

@@ -184,14 +184,14 @@ export function getPlayer2Position() {
 	}
 }
 export function selectOption() {
-  const gridSelect = document.querySelector('#gridSelect');
+  const gridSelect = document.querySelector('.gridSelect');
 	for (let i = 0; i < gridSelect.length; i++) {
 		if (gridSelect[i].value == data.columnsCount) {
 			data.columnsCount = gridSelect.value;
 			data.rowsCount = gridSelect.value;
 		}
 	}
-	const pointsToWinSelect = document.querySelector('#pointsToWinSelect');
+	const pointsToWinSelect = document.querySelector('.pointsToWinSelect');
 	for (let i = 0; i < pointsToWinSelect.length; i++) {
 		if (pointsToWinSelect[i].value == data.winPoints) {
 			data.winPoints =  parseInt(pointsToWinSelect.value);
@@ -230,6 +230,9 @@ export function getPointsToWin() {
 	return {
 		winPoints: data.winPoints,
 	}
+}
+export function WhoWin() {
+	return getScores().player1Points === getPointsToWin().winPoints ? 'The first player won': 'The second player won';
 }
 
 export function getWin() {
