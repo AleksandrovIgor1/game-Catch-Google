@@ -2,8 +2,6 @@ import { getPointsToWin, getScores, restart } from '../../../data.js';
 export function Win() {
 	const element = document.createElement('div');
 	element.id = 'win';
-	const whoWin = WhoWin()
-	element.append(whoWin);
 	const whoWin = WhoWin();
 	element.append(whoWin);
 	const restartButton = RestartButton();
