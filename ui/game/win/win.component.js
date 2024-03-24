@@ -8,6 +8,7 @@ export function Win() {
 	element.append(restartButton);
 	return element;
 };
+
 export function RestartButton() {
 	const element = document.createElement('button');
 	element.innerHTML = 'RESTART';
