@@ -1,5 +1,5 @@
-import { getSettings } from '../../../data.js'
-import { Cell } from './cell/cell.component.js'
+import { getSettings } from '../../../data.js';
+import { Cell } from './cell/cell.component.js';
 export function GameGrid() {
 	const gridElement = document.createElement('table');
 	for (let y = 0; y < getSettings().rowsCount; y++) {
@@ -10,7 +10,6 @@ export function GameGrid() {
 		}
 		gridElement.append(rowElement);
 	}
-
 	return gridElement;
 };
 

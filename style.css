@@ -24,9 +24,9 @@ select:hover {
 }
 
 button {
-	padding: 0 20px;    
+	padding: 0 20px;  
 	height: 42px;
-	line-height: 38px;    
+	line-height: 38px;
 	border: 1px solid #4d76d4;
 	border-radius: 25px;    
 	font-size: 14px;
@@ -36,7 +36,7 @@ button {
 	font-weight: 600;
 }
 button:hover {
-	background-color: #4c66b4
+	background-color: #4c66b4;
 }
 
 .selectBlocks {
@@ -44,20 +44,22 @@ button:hover {
 	display: flex;
 	gap: 20px;
 }
-.gridSelectBlock {
+
+.commonSelectBlocks {
 	display: flex;
+	width: 100px;
 	flex-direction: column;
 }
-.pointsToWinSelectBlock {
+.scoreBlock {
+	margin: 10px;
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
+	gap: 10px;
 }
 #app {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 10px;
 }
 #win {
 	margin-top: 10px;

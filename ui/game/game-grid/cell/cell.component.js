@@ -1,11 +1,11 @@
 import {
 	getGooglePosition, getPlayer1Position, getPlayer2Position
-} from '../../../../data.js'
+} from '../../../../data.js';
 import {
 	Google,
 	Player1,
 	Player2
-} from './google/google.component.js'
+} from './google/google.component.js';
 export function Cell(x, y) {
 	const cellElement = document.createElement('td');
 	if (x === getGooglePosition().x && y === getGooglePosition().y) {
@@ -18,4 +18,4 @@ export function Cell(x, y) {
 		cellElement.append(Player2());
 	}
 	return cellElement;
-}
+};

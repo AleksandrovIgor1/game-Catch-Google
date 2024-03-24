@@ -11,16 +11,10 @@ import {
 	movePlayer2Up,
 	subscribe
 } from './data.js';
-import {
-	Game
-} from "./ui/game/game.component.js";
+import { Game } from "./ui/game/game.component.js";
 import { Start } from './ui/game/start/start.component.js';
-import {
-	Win
-} from './ui/game/win/win.component.js';
-
+import { Win } from './ui/game/win/win.component.js';
 const appElement = document.querySelector("#app");
-
 function renderApp() {
 	appElement.innerHTML = '';
 	if (getGameStatus() === GAME_STATUSES.WIN) {
@@ -34,13 +28,10 @@ function renderApp() {
 		const start = Start();
 		appElement.append(start);
 	}
-
-}
-renderApp()
+};
+renderApp();
 subscribe(renderApp);
-
 window.addEventListener('keyup', (e) => {
-	console.log(e.code)
 	switch (e.code) {
 		case 'ArrowUp':
 			movePlayer1Up();
@@ -67,4 +58,4 @@ window.addEventListener('keyup', (e) => {
 			movePlayer2Right();
 			break;
 	}
-})
+});
