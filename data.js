@@ -1,7 +1,7 @@
 const data = {
 	catchPoints: 0,
 	missPoints: 0,
-	winPoints: 5,
+	winPoints: 10,
 	win: false,
 	inProgress: false,
 	inStart: true,
@@ -183,20 +183,54 @@ export function getPlayer2Position() {
 		y: data.players[1].y,
 	}
 }
-export function selectOption() {
-  const gridSelect = document.querySelector('.gridSelect');
-	for (let i = 0; i < gridSelect.length; i++) {
-		if (gridSelect[i].value == data.columnsCount) {
-			data.columnsCount = gridSelect.value;
-			data.rowsCount = gridSelect.value;
+// export function GridSelect() {
+// 	const gridSelect = document.querySelector('.gridSelect');
+// 	for (let i = 0; i < gridSelect.length; i++) {
+// 		if (gridSelect[i].value == data.columnsCount) {
+// 			data.columnsCount = gridSelect.value;
+// 			data.rowsCount = gridSelect.value;
+// 		}
+// 	}
+// }
+
+export function PointsToWinSelect() {
+	const pointsSelect = document.createElement('select');
+	pointsSelect.className = 'pointsToWinSelect';
+	const pointsOptions = ["5pts", "10pts", "20pts", "30pts"];
+	pointsOptions.forEach(option => {
+		const opt = document.createElement('option');
+		if (option.length == 4) {
+			opt.value = parseInt(option.slice(0, 1));
+		} else {
+			opt.value = parseInt(option.slice(0, 2));
 		}
-	}
-	const pointsToWinSelect = document.querySelector('.pointsToWinSelect');
-	for (let i = 0; i < pointsToWinSelect.length; i++) {
-		if (pointsToWinSelect[i].value == data.winPoints) {
-			data.winPoints =  parseInt(pointsToWinSelect.value);
-		}
-	}
+		opt.textContent = option;
+		pointsSelect.append(opt);
+	});
+
+	pointsSelect.addEventListener('change', function() {
+		data.winPoints = parseInt(pointsSelect.value);
+		console.log(data.winPoints)
+		
+	})
+	return pointsSelect
+}
+export function GridSelect() {
+	const gridSelect = document.createElement('select');
+	gridSelect.className = 'gridSelect';
+	const gridOptions = ["5x5", "6x6", "7x7", "8x8"];
+	gridOptions.forEach(option => {
+		const opt = document.createElement('option');
+		opt.value = option
+		opt.textContent = option;
+		gridSelect.append(opt);
+	});
+
+	gridSelect.addEventListener('change', function() {
+		data.columnsCount = parseInt(gridSelect.value);
+		data.rowsCount = parseInt(gridSelect.value);
+	})
+	return gridSelect
 }
 export function getSettings() {
 
@@ -232,7 +266,7 @@ export function getPointsToWin() {
 	}
 }
 export function WhoWin() {
-	return getScores().player1Points === getPointsToWin().winPoints ? 'The first player won': 'The second player won';
+	return getScores().player1Points === data.winPoints ? 'The first player won' : 'The second player won';
 }
 
 export function getWin() {

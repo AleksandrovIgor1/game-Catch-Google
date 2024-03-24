@@ -1,13 +1,13 @@
 import {
 	WhoWin,
-	getScores,
 	restart
 } from '../../../data.js'
 
 export function Win() {
 	const element = document.createElement('div');
 	element.id = 'win';
-	element.append(WhoWin());
+	const whoWin = WhoWin()
+	element.append(whoWin);
 	const restartButton = RestartButton();
 	element.append(restartButton);
 	return element;
